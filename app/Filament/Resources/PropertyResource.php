@@ -204,11 +204,6 @@ class PropertyResource extends Resource
                                             ->label('Ativo')
                                             ->default(true)
                                             ->helperText('Imóveis inativos não aparecem no site'),
-                                        
-                                        Toggle::make('is_featured')
-                                            ->label('Destaque')
-                                            ->default(false)
-                                            ->helperText('Imóveis em destaque aparecem na página inicial'),
                                     ])
                                     ->columns(2),
                             ]),
@@ -262,10 +257,6 @@ class PropertyResource extends Resource
                 Tables\Columns\TextColumn::make('contact')
                     ->label('Contato')
                     ->searchable(),
-                
-                Tables\Columns\IconColumn::make('is_featured')
-                    ->label('Destaque')
-                    ->boolean(),
                 
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Ativo')

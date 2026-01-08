@@ -33,12 +33,12 @@
     <!-- Contact Content -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16">
+            <div class="grid lg:grid-cols-12 gap-16">
                 <!-- Contact Info -->
                 <div>
                     <h2 class="section-title mb-8">Informações de <span class="gradient-text">Contato</span></h2>
                     
-                    <div class="space-y-6 mb-10">
+                    <div class="grid lg:grid-cols-2 gap-4">
                         <!-- Address 1 -->
                         <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
                             <div class="w-12 h-12 bg-royal-100 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -112,71 +112,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
-                <div>
-                    <div class="bg-slate-50 rounded-2xl p-8">
-                        <h3 class="text-2xl font-semibold text-slate-800 mb-6">Envie sua mensagem</h3>
-                        
-                        <form action="#" method="POST" class="space-y-6">
-                            @csrf
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Nome completo *</label>
-                                    <input type="text" id="name" name="name" required class="form-input">
-                                </div>
-                                <div>
-                                    <label for="phone" class="block text-sm font-medium text-slate-700 mb-2">Telefone *</label>
-                                    <input type="tel" id="phone" name="phone" required class="form-input">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email *</label>
-                                <input type="email" id="email" name="email" required class="form-input">
-                            </div>
-
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Assunto</label>
-                                <select id="subject" name="subject" class="form-select">
-                                    <option value="">Selecione um assunto</option>
-                                    <option value="comprar">Quero comprar um imóvel</option>
-                                    <option value="alugar">Quero alugar um imóvel</option>
-                                    <option value="vender">Quero vender/anunciar um imóvel</option>
-                                    <option value="visita">Agendar visita</option>
-                                    <option value="duvida">Dúvida geral</option>
-                                    <option value="outro">Outro</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Mensagem *</label>
-                                <textarea id="message" name="message" rows="5" required class="form-input resize-none" placeholder="Como podemos ajudar?"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-primary w-full justify-center">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                                </svg>
-                                Enviar Mensagem
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="h-96 bg-slate-200">
-        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-            <div class="text-center">
-                <svg class="w-16 h-16 text-slate-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <p class="text-slate-500">Mapa será exibido aqui</p>
-                <p class="text-sm text-slate-400 mt-2">Integre com Google Maps ou OpenStreetMap</p>
             </div>
         </div>
     </section>

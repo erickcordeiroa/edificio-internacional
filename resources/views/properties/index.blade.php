@@ -27,37 +27,14 @@
             <form action="{{ route('properties.index') }}" method="GET" id="filter-form">
                 <div class="flex flex-wrap gap-4 items-end">
                     <div class="flex-1 min-w-[150px]">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">Transação</label>
                         <select name="transaction" class="form-select text-sm" onchange="document.getElementById('filter-form').submit()">
                             <option value="">Todos</option>
-                            <option value="sale" {{ request('transaction') === 'sale' ? 'selected' : '' }}>Comprar</option>
+                            <option value="sale" {{ request('transaction') === 'sale' ? 'selected' : '' }}>Vender</option>
                             <option value="rent" {{ request('transaction') === 'rent' ? 'selected' : '' }}>Alugar</option>
                         </select>
                     </div>
                     <div class="flex-1 min-w-[150px]">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">Tipo</label>
-                        <select name="type" class="form-select text-sm" onchange="document.getElementById('filter-form').submit()">
-                            <option value="">Todos</option>
-                            <option value="house" {{ request('type') === 'house' ? 'selected' : '' }}>Casa</option>
-                            <option value="apartment" {{ request('type') === 'apartment' ? 'selected' : '' }}>Apartamento</option>
-                            <option value="commercial" {{ request('type') === 'commercial' ? 'selected' : '' }}>Comercial</option>
-                            <option value="land" {{ request('type') === 'land' ? 'selected' : '' }}>Terreno</option>
-                            <option value="farm" {{ request('type') === 'farm' ? 'selected' : '' }}>Fazenda/Sítio</option>
-                        </select>
-                    </div>
-                    <div class="flex-1 min-w-[150px]">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">Cidade</label>
-                        <input type="text" name="city" value="{{ request('city') }}" placeholder="Digite a cidade" class="form-input text-sm">
-                    </div>
-                    <div class="flex-1 min-w-[120px]">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">Quartos</label>
-                        <select name="bedrooms" class="form-select text-sm" onchange="document.getElementById('filter-form').submit()">
-                            <option value="">Todos</option>
-                            <option value="1" {{ request('bedrooms') === '1' ? 'selected' : '' }}>1+</option>
-                            <option value="2" {{ request('bedrooms') === '2' ? 'selected' : '' }}>2+</option>
-                            <option value="3" {{ request('bedrooms') === '3' ? 'selected' : '' }}>3+</option>
-                            <option value="4" {{ request('bedrooms') === '4' ? 'selected' : '' }}>4+</option>
-                        </select>
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Pesquisar Imóvel" class="form-input text-sm">
                     </div>
                     <div class="flex gap-2">
                         <button type="submit" class="btn-primary text-sm py-2.5">
@@ -66,7 +43,7 @@
                             </svg>
                             Buscar
                         </button>
-                        @if(request()->hasAny(['transaction', 'type', 'city', 'bedrooms', 'min_price', 'max_price']))
+                        @if(request()->hasAny(['transaction', 'search']))
                             <a href="{{ route('properties.index') }}" class="inline-flex items-center justify-center px-4 py-2.5 text-sm text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">
                                 Limpar
                             </a>

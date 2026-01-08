@@ -30,11 +30,8 @@
                     <a href="{{ route('home') }}" class="font-medium text-slate-700 hover:text-royal-600 transition-colors {{ request()->routeIs('home') ? 'text-royal-600' : '' }}">
                         Início
                     </a>
-                    <a href="{{ route('properties.index', ['transaction' => 'SALE']) }}" class="font-medium text-slate-700 hover:text-royal-600 transition-colors">
-                        Comprar
-                    </a>
-                    <a href="{{ route('properties.index', ['transaction' => 'RENT']) }}" class="font-medium text-slate-700 hover:text-royal-600 transition-colors">
-                        Alugar
+                    <a href="{{ route('properties.index') }}" class="font-medium text-slate-700 hover:text-royal-600 transition-colors">
+                        Imóveis
                     </a>
                     <a href="{{ route('fractions.simulator') }}" class="font-medium text-slate-700 hover:text-royal-600 transition-colors {{ request()->routeIs('fractions.*') ? 'text-royal-600' : '' }}">
                         Frações

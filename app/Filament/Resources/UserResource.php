@@ -13,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use UnitEnum;
 
@@ -174,6 +175,7 @@ class UserResource extends Resource
                 Actions\EditAction::make()
                     ->label('Editar'),
                 Actions\DeleteAction::make()
+                    ->visible(fn ($record) => Auth::user() != $record)
                     ->label('Excluir'),
             ])
             ->bulkActions([

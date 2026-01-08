@@ -16,19 +16,8 @@ class PropertyController extends Controller
             $query->where('type', $request->transaction);
         }
 
-        // Filtrar por localização
-        if ($request->has('location') && $request->location) {
-            $query->where('location', 'like', '%' . $request->location . '%');
-        }
-
-        // Filtrar por preço mínimo
-        if ($request->has('min_price') && $request->min_price) {
-            $query->where('price', '>=', (float) $request->min_price);
-        }
-
-        // Filtrar por preço máximo
-        if ($request->has('max_price') && $request->max_price) {
-            $query->where('price', '<=', (float) $request->max_price);
+        if ($request->has('search')) {
+            $query->whereLike('title', "%{$request->search}%");
         }
 
         $properties = $query->latest()->paginate(12);

@@ -13,6 +13,9 @@ Route::get('/sobre', [HomeController::class, 'about'])->name('about');
 
 // Contato
 Route::get('/contato', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contato', [HomeController::class, 'send'])
+    ->middleware('throttle:5,1')
+    ->name('contact.send');
 
 // Listagem de imóveis
 Route::get('/imoveis', [PropertyController::class, 'index'])->name('properties.index');
