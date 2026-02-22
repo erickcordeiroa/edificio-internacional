@@ -11,6 +11,7 @@ services:
       - ./:/var/www
       - ./storage:/var/www/storage
       - ./bootstrap/cache:/var/www/bootstrap/cache
+      - /var/www/public/build
     networks:
       - edificio-network
 
