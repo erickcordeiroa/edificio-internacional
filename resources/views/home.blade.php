@@ -16,22 +16,21 @@
             <div class="max-w-2xl">
                 <!-- Content -->
                 <div class="text-center lg:text-left">
-                    <div class="inline-block px-4 py-2 bg-royal-100 text-royal-700 rounded-full text-sm font-medium mb-6 animate-fade-in-up">
-                        🏠 Há mais de 20 anos no mercado
-                    </div>
-                    
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight animate-fade-in-up" style="animation-delay: 0.1s">
-                        <span class="font-display italic text-royal-600">Edifício</span>
-                        <br>
-                        <span class="gradient-text">Internacional</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight animate-fade-in-up"
+                        style="animation-delay: 0.1s">
+                        <img src="{{ asset('img/new-logo.png') }}" alt="Edifício Internacional"
+                            class="h-16 w-auto group-hover:opacity-90 transition-opacity">
                     </h1>
-                    
-                    <p class="text-lg text-slate-600 mt-6 max-w-lg mx-auto lg:mx-0 animate-fade-in-up" style="animation-delay: 0.2s">
-                        Encontre o imóvel perfeito para você e sua família. Oferecemos as melhores opções de casas, apartamentos e terrenos para venda e aluguel.
+
+                    <p class="text-lg text-slate-600 mt-6 max-w-lg mx-auto lg:mx-0 animate-fade-in-up"
+                        style="animation-delay: 0.2s">
+                        Encontre o imóvel perfeito para você e sua família. Oferecemos as melhores opções de apartamentos e
+                        kitnets para venda e aluguel.
                     </p>
 
                     <!-- Stats -->
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-8 animate-fade-in-up" style="animation-delay: 0.3s">
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-8 mt-8 animate-fade-in-up"
+                        style="animation-delay: 0.3s">
                         <div class="text-center">
                             <div class="text-3xl font-bold text-royal-600">{{ $propertiesForSale }}</div>
                             <div class="text-sm text-slate-500">Imóveis à Venda</div>
@@ -47,26 +46,33 @@
                     </div>
 
                     <!-- CTA Buttons -->
-                    <div class="flex flex-col lg:inline-flex w-full lg:w-auto mt-10 animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="flex flex-col lg:inline-flex w-full lg:w-auto mt-10 animate-fade-in-up"
+                        style="animation-delay: 0.4s">
                         <div class="flex flex-col lg:flex-row gap-4">
-                            <a href="{{ route('properties.index', ['transaction' => 'sale']) }}" class="btn-primary w-full lg:w-auto justify-center">
+                            <a href="{{ route('properties.index', ['transaction' => 'sale']) }}"
+                                class="btn-primary w-full lg:w-auto justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
                                 Comprar Imóvel
                             </a>
-                            <a href="{{ route('properties.index', ['transaction' => 'rent']) }}" class="btn-secondary w-full lg:w-auto justify-center">
+                            <a href="{{ route('properties.index', ['transaction' => 'rent']) }}"
+                                class="btn-secondary w-full lg:w-auto justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                 </svg>
                                 Alugar Imóvel
                             </a>
                         </div>
-                        <a href="{{ route('fractions.simulator') }}" class="flex items-center justify-center gap-2 bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600 transition-all shadow-lg mt-4">
+                        <a href="{{ route('fractions.simulator') }}"
+                            class="flex items-center justify-center gap-2 bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600 transition-all shadow-lg mt-4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
-                            Simule seu condomínio
+                            Simule seu Condomínio
                         </a>
                     </div>
                 </div>
@@ -77,29 +83,30 @@
 
     <!-- Featured Properties -->
     @if($featuredProperties->count() > 0)
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="section-title">Imóveis em <span class="gradient-text">Destaque</span></h2>
-                <p class="section-subtitle">Os melhores imóveis selecionados especialmente para você</p>
-            </div>
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Imóveis em <span class="gradient-text">Destaque</span></h2>
+                    <p class="section-subtitle">Os melhores imóveis selecionados especialmente para você</p>
+                </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($featuredProperties as $property)
-                    @include('components.property-card', ['property' => $property])
-                @endforeach
-            </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach($featuredProperties as $property)
+                        @include('components.property-card', ['property' => $property])
+                    @endforeach
+                </div>
 
-            <div class="text-center mt-12">
-                <a href="{{ route('properties.index') }}" class="btn-secondary">
-                    Ver Todos os Imóveis
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
+                <div class="text-center mt-12">
+                    <a href="{{ route('properties.index') }}" class="btn-secondary">
+                        Ver Todos os Imóveis
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
     <!-- Why Choose Us -->
@@ -112,16 +119,19 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold">Por que escolher a <span class="text-sky-400">Edifício Internacional</span>?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold">Por que escolher a <span class="text-sky-400">Edifício
+                        Internacional</span>?</h2>
                 <p class="text-slate-300 mt-3 max-w-2xl mx-auto">Confiança e excelência em cada negociação</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Feature 1 -->
                 <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
+                    <div
+                        class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
                         <svg class="w-10 h-10 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Segurança</h3>
@@ -130,9 +140,11 @@
 
                 <!-- Feature 2 -->
                 <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
+                    <div
+                        class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
                         <svg class="w-10 h-10 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Atendimento</h3>
@@ -141,9 +153,11 @@
 
                 <!-- Feature 3 -->
                 <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
+                    <div
+                        class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
                         <svg class="w-10 h-10 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Variedade</h3>
@@ -152,9 +166,11 @@
 
                 <!-- Feature 4 -->
                 <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
+                    <div
+                        class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-all">
                         <svg class="w-10 h-10 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Melhor Preço</h3>
@@ -166,90 +182,19 @@
 
     <!-- Latest Properties -->
     @if($latestProperties->count() > 0)
-    <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="section-title">Imóveis <span class="gradient-text">Recentes</span></h2>
-                <p class="section-subtitle">Confira as últimas opções disponíveis</p>
-            </div>
+        <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Imóveis <span class="gradient-text">Recentes</span></h2>
+                    <p class="section-subtitle">Confira as últimas opções disponíveis</p>
+                </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                @foreach($latestProperties as $property)
-                    @include('components.property-card', ['property' => $property])
-                @endforeach
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($latestProperties as $property)
+                        @include('components.property-card', ['property' => $property])
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
-
-    {{-- <!-- About Preview -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Image -->
-                <div class="relative">
-                    <div class="rounded-3xl overflow-hidden shadow-xl">
-                        <img src="{{ asset('img/painel-visual.png') }}" alt="Edifício Internacional" class="w-full h-auto object-cover">
-                    </div>
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -right-6 bg-royal-600 text-white p-6 rounded-2xl shadow-xl">
-                        <div class="text-4xl font-bold">20+</div>
-                        <div class="text-sm text-royal-200">Anos de experiência</div>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div>
-                    <div class="inline-block px-4 py-2 bg-royal-100 text-royal-700 rounded-full text-sm font-medium mb-6">
-                        Sobre Nós
-                    </div>
-                    <h2 class="section-title">Sua nova história <span class="gradient-text">começa aqui</span></h2>
-                    <p class="text-slate-600 mt-6 leading-relaxed">
-                        A Edifício Internacional é uma imobiliária consolidada no mercado há mais de duas décadas. 
-                        Nossa missão é transformar o sonho da casa própria em realidade, oferecendo um atendimento 
-                        personalizado e imóveis de qualidade.
-                    </p>
-                    <p class="text-slate-600 mt-4 leading-relaxed">
-                        Contamos com uma equipe de profissionais altamente qualificados, prontos para orientar você 
-                        em todas as etapas da compra, venda ou locação do seu imóvel.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 mt-8">
-                        <div class="flex items-center gap-2 text-slate-600">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Atendimento personalizado
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-600">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Documentação completa
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-600">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Consultoria jurídica
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-600">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Financiamento facilitado
-                        </div>
-                    </div>
-
-                    <a href="{{ route('about') }}" class="btn-primary mt-8">
-                        Conheça nossa história
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 @endsection
-

@@ -12,8 +12,9 @@ class PropertyController extends Controller
         $query = Property::with('photos')->active();
 
         // Filtrar por tipo de transação
-        if ($request->has('transaction') && in_array($request->transaction, ['SALE', 'RENT'])) {
-            $query->where('type', $request->transaction);
+        if ($request->has('transaction') && in_array($request->transaction, ['sale', 'rent'])) {
+            $type = strtoupper($request->transaction);
+            $query->where('type', $type);
         }
 
         if ($request->has('search')) {

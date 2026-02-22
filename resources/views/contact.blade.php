@@ -23,9 +23,6 @@
                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
                     Entre em <span class="text-sky-400">Contato</span>
                 </h1>
-                <p class="text-slate-300 text-lg">
-                    Estamos prontos para ajudar você a encontrar o imóvel perfeito
-                </p>
             </div>
         </div>
     </section>
