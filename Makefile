@@ -23,23 +23,28 @@ permissions: ## Fix storage and cache permissions
 	docker exec -u root edificio-app chmod -R 775 storage bootstrap/cache
 
 migrate: ## Run database migrations
-	docker exec edificio-app php artisan migrate --force
+	@echo "Waiting for database to be ready..."
+	@until docker compose exec -T app php artisan db:show > /dev/null 2>&1; do \
+		echo "Database is unavailable - sleeping..."; \
+		sleep 2; \
+	done
+	docker compose exec -T app php artisan migrate --force
 
 create-user: ## Create a new Filament user
-	docker exec -it edificio-app php artisan make:filament-user
+	docker compose exec -it app php artisan make:filament-user
 
 seed: ## Run database seeders
-	docker exec edificio-app php artisan db:seed --force
+	docker compose exec -T app php artisan db:seed --force
 
 optimize: ## Run Laravel optimization commands
-	docker exec edificio-app php artisan config:cache
-	docker exec edificio-app php artisan route:cache
-	docker exec edificio-app php artisan view:cache
-	docker exec edificio-app php artisan storage:link
-	docker exec edificio-app php artisan filament:optimize
+	docker compose exec -T app php artisan config:cache
+	docker compose exec -T app php artisan route:cache
+	docker compose exec -T app php artisan view:cache
+	docker compose exec -T app php artisan storage:link
+	docker compose exec -T app php artisan filament:optimize
 
 deploy: build ## Deploy updates (build, migrate, optimize, permissions)
-	docker exec edificio-app composer install --no-interaction --optimize-autoloader --no-dev
+	docker compose exec -T app composer install --no-interaction --optimize-autoloader --no-dev
 	@make migrate
 	@make optimize
 	@make permissions

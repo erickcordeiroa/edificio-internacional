@@ -11,20 +11,66 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to VPS
+      - name: Pull latest code
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /${{ secrets.USERNAME }}/new-edificio
+            cd /home/${{ secrets.USERNAME }}/new-edificio
             git pull origin ${{ github.ref_name }}
-            
-            # Create .env if it doesn't exist
+
+      - name: Setup Environment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
             if [ ! -f .env ]; then
               echo "Creating .env file"
               cp .env.example .env
             fi
-            
-            make deploy
+
+      - name: Build Docker Containers
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
+            make build
+
+      - name: Install Dependencies
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
+            docker compose exec -T app composer install --no-interaction --optimize-autoloader --no-dev
+
+      - name: Run Migrations
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
+            make migrate
+
+      - name: Optimize Application
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
+            make optimize
+            make permissions
