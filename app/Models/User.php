@@ -2,13 +2,22 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Aqui você define quem pode entrar. 
+        // Por exemplo: apenas quem é 'admin' e está 'active'.
+        return $this->isAdmin() && $this->isActive();
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -61,7 +70,7 @@ class User extends Authenticatable
      */
     public function getStatusLabelAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'active' => 'Ativo',
             'inactive' => 'Inativo',
             'blocked' => 'Bloqueado',
@@ -74,7 +83,7 @@ class User extends Authenticatable
      */
     public function getRoleLabelAttribute(): string
     {
-        return match($this->role) {
+        return match ($this->role) {
             'admin' => 'Administrador',
             'user' => 'Usuário',
             'manager' => 'Gerente',
