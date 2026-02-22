@@ -1,0 +1,30 @@
+name: Deploy Laravel App
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/new-edificio
+            git pull origin ${{ github.ref_name }}
+            
+            # Create .env if it doesn't exist
+            if [ ! -f .env ]; then
+              echo "Creating .env file"
+              cp .env.example .env
+            fi
+            
+            make deploy
