@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             git pull origin ${{ github.ref_name }}
 
       - name: Setup Environment
@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             if [ ! -f .env ]; then
               echo "Creating .env file"
               cp .env.example .env
@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             make build
 
       - name: Install Dependencies
@@ -51,7 +51,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             docker compose exec -T app composer install --no-interaction --optimize-autoloader --no-dev
 
       - name: Run Migrations
@@ -61,7 +61,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             make migrate
 
       - name: Optimize Application
@@ -71,6 +71,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             make optimize
             make permissions
