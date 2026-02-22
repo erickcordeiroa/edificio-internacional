@@ -14,9 +14,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Aqui você define quem pode entrar. 
-        // Por exemplo: apenas quem é 'admin' e está 'active'.
-        return $this->isAdmin() && $this->isActive();
+        return $this->isActive();
     }
 
     /**
