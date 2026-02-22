@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.USERNAME }}/new-edificio
+            cd /${{ secrets.USERNAME }}/new-edificio
             git pull origin ${{ github.ref_name }}
             
             # Create .env if it doesn't exist
