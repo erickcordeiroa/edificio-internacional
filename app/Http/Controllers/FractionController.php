@@ -10,11 +10,11 @@ class FractionController extends Controller
     public function simulator()
     {
         $fractions = Fraction::orderBy('type')->orderBy('location')->get();
-        
+
         $groupedFractions = $fractions->groupBy('type');
-        
+
         $totalFraction = Fraction::getTotalFraction();
-        
+
         return view('fractions.simulator', compact('fractions', 'groupedFractions', 'totalFraction'));
     }
 
@@ -26,7 +26,7 @@ class FractionController extends Controller
 
         $totalValue = (float) $request->total_value;
         $fractions = Fraction::orderBy('type')->orderBy('location')->get();
-        
+
         $results = $fractions->map(function ($fraction) use ($totalValue) {
             return [
                 'id' => $fraction->id,
@@ -65,30 +65,31 @@ class FractionController extends Controller
         $typeMap = [
             'loja' => 'store',
             'apartamento' => 'apartment',
-            'box' => 'garage',
+            'box' => 'box',
         ];
 
         $dbType = $typeMap[$type] ?? $type;
 
         // Build search patterns based on type
         $searchPatterns = [];
-        
+
         if ($dbType === 'store') {
             $searchPatterns = ["Loja {$number}", "Loja 0{$number}", "Loja {$number}"];
         } elseif ($dbType === 'apartment') {
             $searchPatterns = ["Apt {$number}", "Apartamento {$number}", "Apt. {$number}"];
-        } elseif ($dbType === 'garage') {
+        } elseif ($dbType === 'box') {
             $searchPatterns = ["Garagem {$number}", "Garagem 0{$number}", "Box {$number}", "Box 0{$number}"];
         }
 
         $fraction = null;
-        
+
         foreach ($searchPatterns as $pattern) {
             $fraction = Fraction::where('type', $dbType)
                 ->where('location', 'like', "%{$pattern}%")
                 ->first();
-            
-            if ($fraction) break;
+
+            if ($fraction)
+                break;
         }
 
         // Also try just searching by number in the location

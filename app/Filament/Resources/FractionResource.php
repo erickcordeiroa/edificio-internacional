@@ -19,7 +19,7 @@ class FractionResource extends Resource
 {
     protected static ?string $model = Fraction::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-chart-pie';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chart-pie';
 
     protected static ?string $navigationLabel = 'Frações';
 
@@ -35,7 +35,7 @@ class FractionResource extends Resource
         return 'Frações';
     }
 
-    public static function getNavigationGroup(): string | UnitEnum | null
+    public static function getNavigationGroup(): string|UnitEnum|null
     {
         return 'Condomínio';
     }
@@ -51,28 +51,26 @@ class FractionResource extends Resource
                             ->label('Localização/Unidade')
                             ->required()
                             ->maxLength(255)
-                            ->placeholder('Ex: Apt 101, Loja 01, Garagem 05'),
-                        
+                            ->placeholder('Ex: 101'),
+
                         Select::make('type')
                             ->label('Tipo')
                             ->options([
                                 'apartment' => 'Apartamento',
                                 'store' => 'Loja',
-                                'garage' => 'Garagem',
-                                'office' => 'Sala Comercial',
-                                'storage' => 'Depósito',
+                                'box' => 'Box'
                             ])
                             ->required()
                             ->native(false)
                             ->placeholder('Selecione o tipo'),
-                        
+
                         TextInput::make('fraction')
                             ->label('Fração Ideal')
                             ->required()
                             ->numeric()
                             ->step(0.000001)
                             ->placeholder('Ex: 0.025000')
-                            ->helperText('Valor decimal da fração (ex: 0.025000 = 2,5%)'),
+                            ->helperText('Valor da fração deve ser preenchida com pontuação'),
                     ])
                     ->columns(3),
             ]);
@@ -86,11 +84,11 @@ class FractionResource extends Resource
                     ->label('Localização')
                     ->searchable()
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('type')
                     ->label('Tipo')
                     ->badge()
-                    ->formatStateUsing(fn (string $state): string => match($state) {
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
                         'apartment' => 'Apartamento',
                         'store' => 'Loja',
                         'garage' => 'Garagem',
@@ -98,7 +96,7 @@ class FractionResource extends Resource
                         'storage' => 'Depósito',
                         default => $state,
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'apartment' => 'info',
                         'store' => 'success',
                         'garage' => 'gray',
@@ -106,21 +104,18 @@ class FractionResource extends Resource
                         'storage' => 'danger',
                         default => 'gray',
                     }),
-                
+
                 Tables\Columns\TextColumn::make('fraction')
                     ->label('Fração')
-                    ->formatStateUsing(fn ($state) => number_format($state, 6, ',', '.'))
-                    ->sortable(),
-                
+                    ->formatStateUsing(fn($state) => number_format($state, 6, ',', '.')),
+
                 Tables\Columns\TextColumn::make('percentage')
                     ->label('Percentual')
-                    ->formatStateUsing(fn ($record) => number_format($record->fraction * 100, 4, ',', '.') . '%')
-                    ->sortable(),
-                
+                    ->formatStateUsing(fn($record) => number_format($record->fraction * 100, 4, ',', '.') . '%'),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Criado em')
                     ->dateTime('d/m/Y H:i')
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -129,14 +124,10 @@ class FractionResource extends Resource
                     ->options([
                         'apartment' => 'Apartamento',
                         'store' => 'Loja',
-                        'garage' => 'Garagem',
-                        'office' => 'Sala Comercial',
-                        'storage' => 'Depósito',
+                        'box' => 'Box',
                     ]),
             ])
             ->actions([
-                Actions\ViewAction::make()
-                    ->label('Ver'),
                 Actions\EditAction::make()
                     ->label('Editar'),
                 Actions\DeleteAction::make()
