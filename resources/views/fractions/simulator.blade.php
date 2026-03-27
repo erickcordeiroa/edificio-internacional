@@ -207,7 +207,8 @@
             return;
         }
 
-        const calculatedValue = totalValue * currentFraction.fraction;
+        const multiplier = Number(currentFraction.calculation_multiplier ?? 0);
+        const calculatedValue = totalValue * multiplier;
         resultValue.textContent = 'R$ ' + calculatedValue.toLocaleString('pt-BR', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2

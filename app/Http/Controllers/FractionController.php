@@ -114,6 +114,7 @@ class FractionController extends Controller
                 'type' => $fraction->type,
                 'type_label' => $fraction->type_label,
                 'fraction' => (float) $fraction->fraction,
+                'calculation_multiplier' => $fraction->calculation_multiplier,
                 'percentage' => $fraction->formatted_percentage,
             ],
         ]);

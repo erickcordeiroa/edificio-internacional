@@ -70,7 +70,7 @@ class FractionResource extends Resource
                             ->numeric()
                             ->step(0.000001)
                             ->placeholder('Ex: 0.025000')
-                            ->helperText('Valor da fração deve ser preenchida com pontuação'),
+                            ->helperText('Informe o percentual da fração (ex.: 0.066350 para 0,06635%)'),
                     ])
                     ->columns(3),
             ]);
@@ -111,7 +111,7 @@ class FractionResource extends Resource
 
                 Tables\Columns\TextColumn::make('percentage')
                     ->label('Percentual')
-                    ->formatStateUsing(fn($record) => number_format($record->fraction * 100, 4, ',', '.') . '%'),
+                    ->formatStateUsing(fn($record) => number_format($record->fraction, 4, ',', '.') . '%'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Criado em')
