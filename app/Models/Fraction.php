@@ -29,7 +29,6 @@ class Fraction extends Model
      */
     public function getCalculationMultiplierAttribute(): float
     {
-        // Fractions are stored as percentages (e.g. 0.06635%), so convert to decimal multiplier.
         return (float) $this->fraction / 100;
     }
 

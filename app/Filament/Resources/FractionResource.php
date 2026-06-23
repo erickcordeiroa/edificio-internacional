@@ -70,7 +70,7 @@ class FractionResource extends Resource
                             ->numeric()
                             ->step(0.000001)
                             ->placeholder('Ex: 0.025000')
-                            ->helperText('Informe o percentual da fração (ex.: 0.066350 para 0,06635%)'),
+                            ->helperText('Informe o percentual da fração ideal (ex.: 0.066350 para 0,06635%)'),
                     ])
                     ->columns(3),
             ]);

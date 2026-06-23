@@ -70,33 +70,23 @@ class FractionController extends Controller
 
         $dbType = $typeMap[$type] ?? $type;
 
-        // Build search patterns based on type
-        $searchPatterns = [];
+        $normalizedNumber = str_pad((string) (int) $number, 2, '0', STR_PAD_LEFT);
 
-        if ($dbType === 'store') {
-            $searchPatterns = ["Loja {$number}", "Loja 0{$number}", "Loja {$number}"];
-        } elseif ($dbType === 'apartment') {
+        $fraction = Fraction::where('type', $dbType)
+            ->whereIn('location', [$normalizedNumber, $number])
+            ->first();
+
+        if (!$fraction && $dbType === 'apartment') {
             $searchPatterns = ["Apt {$number}", "Apartamento {$number}", "Apt. {$number}"];
-        } elseif ($dbType === 'box') {
-            $searchPatterns = ["Garagem {$number}", "Garagem 0{$number}", "Box {$number}", "Box 0{$number}"];
-        }
 
-        $fraction = null;
+            foreach ($searchPatterns as $pattern) {
+                $fraction = Fraction::where('type', $dbType)
+                    ->where('location', 'like', "%{$pattern}%")
+                    ->first();
 
-        foreach ($searchPatterns as $pattern) {
-            $fraction = Fraction::where('type', $dbType)
-                ->where('location', 'like', "%{$pattern}%")
-                ->first();
-
-            if ($fraction)
-                break;
-        }
-
-        // Also try just searching by number in the location
-        if (!$fraction) {
-            $fraction = Fraction::where('type', $dbType)
-                ->where('location', 'like', "%{$number}%")
-                ->first();
+                if ($fraction)
+                    break;
+            }
         }
 
         if (!$fraction) {

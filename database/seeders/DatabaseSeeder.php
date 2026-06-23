@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         // Criar usuário admin
         User::firstOrCreate(
-            ['email' => 'admin@edificio.com'],
+            ['email' => 'sindico@edificiointernacional.com'],
             [
                 'name' => 'Administrador',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('sindico2023*'),
                 'status' => 'active',
                 'role' => 'admin',
             ]
@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
         
         // Criar frações de exemplo
         $this->call(FractionSeeder::class);
+        $this->call(ApartmentFractionSeeder::class);
     }
 }
